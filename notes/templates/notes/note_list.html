@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content%}
+<div class="row">
+    <div class="text-center">
+        <h1 class="mt-3">To-Do list
+            <a  data-bs-toggle="collapse" href="#collapseExample" role="button">
+                <i class="fas fa-plus fa-sm text-warning" ></i>
+            </a>
+        </h1>
+        <hr>
+    </div>
+
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <!-- {% comment %} form {% endcomment %} -->
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group m-3">
+                    <label class=" " for="id_title">Title</label>
+                    {{form.title}}
+                </div>
+                <div class="form-group m-3">
+                    <label class=" " for="id_due_date">Due Date</label>
+                    {{form.due_date}}
+                </div>
+                <div class="form-group m-3">
+                    <label class=" " for="id_title">Label</label>
+                    {{form.label}}
+                </div>
+                <button type="submit" class="btn btn-primary ms-3 mb-2">Submit</button>
+            </form>
+            <!-- {% comment %} endform {% endcomment %} -->
+        </div>
+    </div>
+
+
+    <div class="border rounded-3 col p-2 text-center centered-form center-block position-relative ">
+        <h3>Remaining</h3>
+        {% for note in to_do_list %}
+        <div class="card container col-md-10 col-md-offset-1" style="width: 18rem;">
+            {% include "note_snippet.html" with note_snippet_var=note type="DELETE" %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="border rounded-3 col p-2 text-center centered-form center-block position-relative ">
+        <h3>finished</h3>
+        {% for note in finished_list %}
+        <div class="card container col-md-10 col-md-offset-1" style="width: 18rem;">
+            {% include "note_snippet.html" with note_snippet_var=note type="ADD" %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}
