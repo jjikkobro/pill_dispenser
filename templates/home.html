@@ -12,8 +12,8 @@ Hi {{ user.username }}!
     <button type="submit">Log Out</button>
 </form>
 {% else %}
-<p>You are not logged in</p>
+<p><a href="{% url 'login' %}">Log In</a></p>
 <p><a href="{% url 'password_reset' %}">Password Reset</a></p>
-<a href="{% url 'login' %}">Log In</a>
+<p><a href="{% url 'signup' %}">Sign UP</a></p>
 {% endif %}
 {% endblock %}
