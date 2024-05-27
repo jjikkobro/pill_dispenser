@@ -3,7 +3,7 @@
 {% block content%}
 <div class="row">
     <div class="text-center">
-        <h1 class="mt-3">To-Do list
+        <h1 class="mt-3">투약 리스트
             <a  data-bs-toggle="collapse" href="#collapseExample" role="button">
                 <i class="fas fa-plus fa-sm text-warning" ></i>
             </a>
@@ -13,22 +13,28 @@
 
     <div class="collapse" id="collapseExample">
         <div class="card card-body">
-            <!-- {% comment %} form {% endcomment %} -->
+            {% if error_message %}
+                <div class="alert alert-danger">{{ error_message }}</div>
+            {% endif %}
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group m-3">
-                    <label class=" " for="id_title">Title</label>
-                    {{form.title}}
+                    <label class=" " for="id_title">컨테이너 번호</label>
+                    {{form.container}}
                 </div>
                 <div class="form-group m-3">
-                    <label class=" " for="id_due_date">Due Date</label>
-                    {{form.due_date}}
+                    <label class=" " for="id_title">약 이름</label>
+                    {{form.medicine}}
                 </div>
                 <div class="form-group m-3">
-                    <label class=" " for="id_title">Label</label>
-                    {{form.label}}
+                    <label class=" " for="id_due_date">투약 시간</label>
+                    {{form.dosing_time}}
                 </div>
-                <button type="submit" class="btn btn-primary ms-3 mb-2">Submit</button>
+                <div class="form-group m-3">
+                    <label class=" " for="id_title">반복</label>
+                    {{form.repeat}}
+                </div>
+                <button type="submit" class="btn btn-primary ms-3 mb-2">저장</button>
             </form>
             <!-- {% comment %} endform {% endcomment %} -->
         </div>
