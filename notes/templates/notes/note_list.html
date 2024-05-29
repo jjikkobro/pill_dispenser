@@ -19,19 +19,19 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group m-3">
-                    <label class=" " for="id_title">컨테이너 번호</label>
+                    <label class=" " for="id_container">컨테이너 번호</label>
                     {{form.container}}
                 </div>
                 <div class="form-group m-3">
-                    <label class=" " for="id_title">약 이름</label>
+                    <label class=" " for="id_medicine">약 이름</label>
                     {{form.medicine}}
                 </div>
                 <div class="form-group m-3">
-                    <label class=" " for="id_due_date">투약 시간</label>
+                    <label class=" " for="id_dosing_time">투약 시간</label>
                     {{form.dosing_time}}
                 </div>
                 <div class="form-group m-3">
-                    <label class=" " for="id_title">반복</label>
+                    <label class=" " for="id_repeat">반복</label>
                     {{form.repeat}}
                 </div>
                 <button type="submit" class="btn btn-primary ms-3 mb-2">저장</button>
