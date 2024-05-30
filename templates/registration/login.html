@@ -4,10 +4,17 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Log In</button>
-</form>
+<div class="wrapper" style="text-align: center;">
+  <h2>로그인</h2>
+  <form method="post">
+    {% csrf_token %}
+    아이디: <br>
+    <input name="username" id="id_username" type="text" placeholder="실명으로 로그인해주세요.">
+    <br>
+    비밀번호: <br>
+    <input name="password" id="id_password" type="password">
+    <br><br>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
 {% endblock %}

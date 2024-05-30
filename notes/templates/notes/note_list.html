@@ -60,5 +60,27 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dailyCheckbox = document.querySelector('input[value="daily"]');
+      const otherCheckboxes = document.querySelectorAll('input.repeat-checkbox:not([value="daily"])');
+  
+      dailyCheckbox.addEventListener('change', function() {
+        if (dailyCheckbox.checked) {
+          otherCheckboxes.forEach(function(checkbox) {
+            checkbox.checked = false;
+          });
+        }
+      });
+  
+      otherCheckboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+          if (checkbox.checked) {
+            dailyCheckbox.checked = false;
+          }
+        });
+      });
+    });
+  </script>
 
 {% endblock content %}

@@ -1,13 +1,21 @@
 <!-- templates/registration/signup.html -->
-{% extends "base.html" %}
-
-{% block title %}Sign Up{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h2>Sign up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Sign Up</button>
-</form>
+<div class="wrapper" style="text-align: center;">
+    <h1>회원가입</h1>
+    <form method="POST">
+        {% csrf_token %}
+        아이디: <br>
+        <input name="username" type="text" placeholder="실명으로 가입해주세요.">
+        <br>
+        비밀번호: <br>
+        <input name="password1" type="password">
+        <br>
+        비밀번호 확인: <br>
+        <input name="password2" type="password">
+        <br><br>
+        <input type="submit" class="btn btn-primary" value="SignUp">
+    </form>
+</div>
 {% endblock %}
