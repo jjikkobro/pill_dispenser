@@ -21,8 +21,9 @@ from notes.views import note_list_view,finish_item,delete_item,recover_item
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("accounts/", include("accounts.urls")),
+    path("registration/", include("accounts.urls")),
     path('accounts/', include("django.contrib.auth.urls")),
+    path('profile/', TemplateView.as_view(template_name="home/profile.html"), name="profile"),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path('note/', note_list_view,name='note-list'),
     path('note/finish-item/<id>/', finish_item,name='finish-note-item'),
