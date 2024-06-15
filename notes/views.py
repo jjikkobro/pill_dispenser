@@ -13,10 +13,10 @@ def note_list_view(request):
         if form.is_valid():
             note = form.save(commit=False)
             note.user = request.user
-            if '매일' in form.cleaned_data['repeat']:
-                note.repaeat = 'daily'
+            if '매일' in form.cleaned_data['repetition']:
+                note.repetition = 'daily'
             else:
-                note.repeat = ','.join(form.cleaned_data['repeat'])
+                note.repetition = ','.join(form.cleaned_data['repetition'])
             print(form.cleaned_data['container'])
             if Note.objects.filter(user=request.user.id, container=form.cleaned_data['container']).exists():
                 error_message = "컨테이너가 이미 채워져있습니다."

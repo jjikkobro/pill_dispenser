@@ -24,7 +24,7 @@ class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     medicine = models.CharField(max_length=100, null=False)
     dosing_time = models.TimeField(null=False, default='08:00')
-    repeat = models.TextField(default='daily')
+    repetition = models.TextField(default='daily')
     container = models.IntegerField(null=True)
     finished = models.BooleanField(default=False)
 
