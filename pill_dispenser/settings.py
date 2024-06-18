@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-sl@wa4)+p4#+wvbh+h@+g3w4(ikwd35c&q7ta%3buklotj27nv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["172.190.90.75", "0.0.0.0", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["172.190.90.75", "0.0.0.0", "172.0.0.1", "localhost"]
 
 
 # Application definition
@@ -121,17 +121,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = "/note"
-LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
