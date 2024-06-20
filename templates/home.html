@@ -1,19 +1,17 @@
 <!-- templates/home.html -->
-{% extends "base.html" %}
+{% extends "layouts/base-fullscreen.html" %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-Hi {{ user.username }}!
-<p><a href="{% url 'password_change' %}">Password Change</a></p>
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Log Out</button>
-</form>
-{% else %}
-<p><a href="{% url 'login' %}">Log In</a></p>
-<p><a href="{% url 'password_reset' %}">Password Reset</a></p>
-<p><a href="{% url 'signup' %}">Sign UP</a></p>
-{% endif %}
+<div class="wrapper" style="text-align: center; padding-top: 20px;">
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'password_change' %}" class="btn btn-primary">비밀번호 변경</a></p>
+        <p><a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a></p>
+    {% else %}
+        <p><a href="{% url 'login' %}" class="btn btn-primary">로그인</a></p>
+        <p><a href="{% url 'password_reset' %}" class="btn btn-primary">비밀번호 초기화</a></p>
+        <p><a href="{% url 'signup' %}" class="btn btn-primary">회원가입</a></p>
+    {% endif %}
+</div>
 {% endblock %}
