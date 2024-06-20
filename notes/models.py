@@ -45,5 +45,5 @@ class Note(models.Model):
         })
     def get_repeat_display(self):
         repeat_dict = dict(REPEAT_CHOICES)
-        repeats = self.repeat.split(',')
+        repeats = self.repetition.split(',')
         return ', '.join([repeat_dict[repeat] for repeat in repeats])
