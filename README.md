@@ -60,6 +60,9 @@ pip install gunicorn
 ```
 ##### 3.2 Gunicorn 서비스 파일 생성
 Systemd 서비스 파일을 생성하여 Gunicorn을 관리합니다.
+```bash
+sudo vi /etc/systemd/system/pill.service
+```
 ```ini
 [Unit]
 Description=Gunicorn instance to serve myproject
@@ -69,7 +72,6 @@ After=network.target
 User=your_user
 Group=www-data
 WorkingDirectory=/path/to/your/project
-Environment="PATH=/path/to/your/project/venv/bin"
 ExecStart=/path/to/your/project/venv/bin/gunicorn --workers 3 --bind unix:/path/to/your/project.sock myproject.wsgi:application
 
 [Install]
@@ -88,11 +90,10 @@ Nginx 설정 파일을 생성하여 Gunicorn과 통합합니다.
 ```nginx
 server {
     listen 80;
-    server_name your_domain_or_IP;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /path/to/your/project;
+        alias /path/to/your/project/staticfiles;
     }
 
     location / {
@@ -104,7 +105,7 @@ server {
 ##### 4.2 Nginx 설정 활성화
 Nginx 설정을 활성화하고 재시작합니다.
 ```bash
-sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled/myproject
 sudo nginx -t
 sudo systemctl restart nginx
 ```
