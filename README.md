@@ -27,7 +27,6 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 - Python 3.x
 - Django 3.x
-다음은 각 목차의 내용을 간단한 설명과 함께 포함한 "How to start" 목차의 마크다운입니다.
 
 #### 1. 가상환경 설정 및 의존성 설치
 ##### 1.1 가상환경 생성 및 활성화
